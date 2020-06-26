@@ -172,6 +172,10 @@ nav .label{
 	display: flex;
 }
 
+.slider-outer.no-transition #slider {
+	transition: none;
+}
+
 #slider.recipes{
 	transform: translateX(0);
 }
@@ -342,11 +346,22 @@ input:focus{
 <script src="/plugins/simple-jekyll-search.min.js" type="text/javascript"></script>
 
 <script>
-SimpleJekyllSearch({
+sjs = SimpleJekyllSearch({
   searchInput: document.getElementById('search-input'),
   resultsContainer: document.getElementById('results-container'),
   json: '/search.json',
-  searchResultTemplate: '<div class="recipe sm-col sm-col-6 lg-col-4 py1 pb2"><a class="block black relative mx1 text-decoration-none" href="{url}"><div class="image ratio bg-primary bg-cover" style="background-image:url({image});"></div><h3 class="title pt1 m0 bold">{title}</h3></a></div>'
+  searchResultTemplate: '<div class="recipe sm-col sm-col-6 lg-col-4 py1 pb2"><a class="block black relative mx1 text-decoration-none" href="{url}"><div class="image ratio bg-primary bg-cover" style="background-image:url({image});"></div><h3 class="title pt1 m0 bold">{title}</h3></a></div>',
+  success: (data) => {
+	var urlparams = new URLSearchParams(location.search);
+	if (urlparams.has("search")) {
+		$(".slider-outer").addClass("no-transition");
+		$(".item.search").click();
+		$(".slider-outer")[0].offsetHeight;
+		$("#search-input").val(urlparams.get("search"));
+		setTimeout(()=>sjs.search(urlparams.get("search")), 0);
+		setTimeout(()=>$(".slider-outer").removeClass("no-transition"), 0);
+	}
+  }
 })
 </script>
 
@@ -381,6 +396,12 @@ SimpleJekyllSearch({
 	    $(this).addClass('active');
 	    
 	});
+
+	if (location.hash.length && $(".item." + location.hash.replace('#', '')).length) {
+		$(".slider-outer").addClass("no-transition");
+		$(".item." + location.hash.replace('#', '')).click();
+		$(".slider-outer").removeClass("no-transition");
+	}
 
 	});
 
