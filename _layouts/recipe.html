@@ -30,10 +30,15 @@ layout: default
       {% include nutritional-information.html %}
     </div>
   </div>
-  
+
+  {% if page.tags %}
   <div class="mt1 clearfix">
-    <div class="sm-col-8" itemprop="yield"><span class="blue bold">{{ site.translation[site.language].recipe_yield }}:</span> {{page.recipe_yield}}</div>
+    <span class="{{page.color}} bold">{{ site.translation[site.language].tags }}:</span>
+    {% for tag in page.tags %}
+      <a class="black italic" href="/?search={{tag}}">{{tag}}</a>
+    {% endfor %}
   </div>
+  {% endif %}
 
   <!-- call up recipe and directions -->
   <div class="clearfix mt3">

@@ -42,6 +42,7 @@ translation:
     subscribe: "Subscribe"
     references: "Adapted from"
     recipe_yield: "Yields"
+    tags: "Tags"
   de:
     components: "Komponenten"
     ingredients: "Zutaten"
