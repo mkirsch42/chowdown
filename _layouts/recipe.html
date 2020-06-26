@@ -35,7 +35,7 @@ layout: default
   <div class="mt1 clearfix">
     <span class="{{page.color}} bold">{{ site.translation[site.language].tags }}:</span>
     {% for tag in page.tags %}
-      <a class="black italic" href="/?search={{tag}}">{{tag}}</a>
+      <a class="black italic" href="/?search={{tag}}">{{tag}}</a>{% unless forloop.last %}, {% endunless %}
     {% endfor %}
   </div>
   {% endif %}
