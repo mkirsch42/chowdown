@@ -5,7 +5,7 @@ layout: default
 
 <!-- call up the image and image credit link -->
   {% if page.image %}
-  <style>#recipe-hero {background-image: url("{{site.baseurl}}/images/{{ page.image }}");}</style>
+  <style>#recipe-hero {background-image: url({{site.baseurl}}/images/{{ page.image }});}</style>
   <div class="xs-p2" id="recipe-hero" />
   {% if page.imagecredit %}
       {% for imagecredit in page.imagecredit %}
@@ -125,6 +125,14 @@ layout: default
   {% for category in page.categories %}
     <p class="clearfix">{{ site.translation[site.language].category }}: <span itemprop="recipeCategory">{{ category }}</span></p>
   {% endfor %}
+
+  {% if recipe.references %}
+    <h4 class="blue regular">{{ site.translation[site.language].references }}:</h4>
+    <ul class="references" itemprop="references">
+      {% for reference in recipe.references %}
+      <li><a href="{{reference.url}}">{{reference.name}}</a></li>
+    </ul>
+  {% endif %}
 
   </article>
 

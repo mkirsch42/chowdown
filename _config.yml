@@ -32,6 +32,7 @@ translation:
     search: "Search"
     blog: "Blog"
     subscribe: "Subscribe"
+    references: "Adapted from"
   de:
     components: "Komponenten"
     ingredients: "Zutaten"
