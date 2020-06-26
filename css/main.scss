@@ -35,12 +35,29 @@ a:hover .image{opacity:0.2;}
 
 .ratio{padding-top:50%; background-position: center center; background-repeat:no-repeat;}
 
+#recipe-hero {
+    height: 25vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position-x: center;
+    background-position-y: 25%;
+}
+
+@media (min-width: 768px) {
+    #recipe-hero {
+        width: 75%;
+        height: 300px;
+        background-attachment: scroll;
+    }
+}
+
 @media all and (max-width:40em){
 .left-align{text-align:center;}
 .right-align{text-align:center;}
 }
 
-@media all and (max-width: 300px){
+@media (max-width: 767.98px){
 .title{font-size:1.3rem; text-align:center; box-sizing:border-box; width:100%;}
 .xs-center{text-align: center}
 .site-title{bottom:-28px; top:auto; left:50%; margin-left:-25px; border-radius:200px; transition:.2s ease bottom}
@@ -51,10 +68,3 @@ a:hover .image{opacity:0.2;}
 .border-1 { border-width: 1px; }
 .border-1:active { border-width: 1px; }
 .capitalize { text-transform: capitalize; }
-
-#recipe-hero {
-    height: 500px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}

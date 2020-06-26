@@ -243,7 +243,7 @@ input:focus{
     {% for post in sorted %}
       <div class="recipe sm-col sm-col-6 lg-col-4 py1 pb2">
           <a class="block relative mx1 text-decoration-none black" href="{{ post.url | prepend: site.baseurl }}">
-            <div class="image ratio bg-primary bg-cover" {% if post.image %} style="background-image:url({{site.baseurl}}/images/{{ post.image }});"{% endfor %}></div>
+            <div class="image ratio bg-primary bg-cover" {% if post.image %} style="background-image:url({{site.baseurl}}/images/{{ post.image }});"{% endif %}></div>
             <h3 class="title pt1 m0 bold">{{ post.title }}</h3>
           </a>
       </div>

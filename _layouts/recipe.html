@@ -6,15 +6,14 @@ layout: default
 <!-- call up the image and image credit link -->
   {% if page.image %}
   <style>#recipe-hero {background-image: url({{site.baseurl}}/images/{{ page.image }});}</style>
-  <div class="xs-p2" id="recipe-hero" />
-  {% if page.imagecredit %}
-      {% for imagecredit in page.imagecredit %}
-        <a href="{{ imagecredit }}" class="right">
-          <svg class="js-geomicon geomicon" width="14" height="14" data-icon="camera" viewBox="0 0 32 32" style="fill:currentcolor"><title>camera icon</title><path d="M0 6 L8 6 L10 2 L22 2 L24 6 L32 6 L32 28 L0 28 z M9 17 A7 7 0 0 0 23 17 A7 7 0 0 0 9 17"></path></svg>
-        </a>
-      {% endfor %}
+  <div class="xs-p2 md-mt3 mx-auto" id="recipe-hero">
+    {% if page.imagecredit %}
+    <a href="{{ page.imagecredit }}" class="right">
+      <svg class="js-geomicon geomicon" width="14" height="14" data-icon="camera" viewBox="0 0 32 32" style="fill:currentcolor"><title>camera icon</title><path d="M0 6 L8 6 L10 2 L22 2 L24 6 L32 6 L32 28 L0 28 z M9 17 A7 7 0 0 0 23 17 A7 7 0 0 0 9 17"></path></svg>
+    </a>
     {% endif %}
-  {% endfor %}
+  </div>
+  {% endif %}
 
 <article class="post-content px2">
 
@@ -26,15 +25,15 @@ layout: default
   <div class="px2 mt3 clearfix">
     <div class="sm-col-8 mx-auto" itemprop="description">{{page.content}}</div>
   </div>
-  
-  <div class="px2 mt1 clearfix">
-    <div class="sm-col-8 mx-auto" itemprop="yield">{{ site.translation[site.language].recipe_yield }}: {{page.recipe_yield}}</div>
-  </div>
 
   <div class="mt1 clearfix">
     <div class="sm-col sm-col-12 lg-col-12">
       {% include nutritional-information.html %}
     </div>
+  </div>
+  
+  <div class="mt1 clearfix">
+    <div class="sm-col-8" itemprop="yield"><span class="blue bold">{{ site.translation[site.language].recipe_yield }}:</span> {{page.recipe_yield}}</div>
   </div>
 
   <!-- call up recipe and directions -->
@@ -135,6 +134,7 @@ layout: default
     <ul class="references" itemprop="references">
       {% for reference in recipe.references %}
       <li><a href="{{reference.url}}">{{reference.name}}</a></li>
+      {% endfor %}
     </ul>
   {% endif %}
 
