@@ -39,6 +39,10 @@ layout: default
     {% endfor %}
   </div>
   {% endif %}
+  
+  <div class="mt1 clearfix">
+    <div class="sm-col-8" itemprop="recipeYield"><span class="{{page.color}} bold">{{ site.translation[site.language].recipe_yield }}:</span> {{page.recipe_yield}}</div>
+  </div>
 
   <!-- call up recipe and directions -->
   <div class="clearfix mt3">
