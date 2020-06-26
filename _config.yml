@@ -2,7 +2,7 @@
 title: Chowdown
 email: mkirsch42@gmail.com
 description: The plain text recipe database for hackers
-baseurl: "https://chow.koosh.xyz"
+url: "https://chow.koosh.xyz"
 language: "en"
 lang_direction: "ltr"
 color: &site-color "maroon"
