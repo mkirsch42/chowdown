@@ -33,6 +33,7 @@ translation:
     blog: "Blog"
     subscribe: "Subscribe"
     references: "Adapted from"
+    recipe_yield: "Yields"
   de:
     components: "Komponenten"
     ingredients: "Zutaten"

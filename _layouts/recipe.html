@@ -26,8 +26,12 @@ layout: default
   <div class="px2 mt3 clearfix">
     <div class="sm-col-8 mx-auto" itemprop="description">{{page.content}}</div>
   </div>
+  
+  <div class="px2 mt1 clearfix">
+    <div class="sm-col-8 mx-auto" itemprop="yield">{{ site.translation[site.language].recipe_yield }}: {{page.recipe_yield}}</div>
+  </div>
 
-  <div class="mt3 clearfix">
+  <div class="mt1 clearfix">
     <div class="sm-col sm-col-12 lg-col-12">
       {% include nutritional-information.html %}
     </div>
