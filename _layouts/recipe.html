@@ -129,11 +129,11 @@ layout: default
     <p class="clearfix">{{ site.translation[site.language].category }}: <span itemprop="recipeCategory">{{ category }}</span></p>
   {% endfor %}
 
-  {% if recipe.references %}
-    <h4 class="blue regular">{{ site.translation[site.language].references }}:</h4>
-    <ul class="references" itemprop="references">
-      {% for reference in recipe.references %}
-      <li><a href="{{reference.url}}">{{reference.name}}</a></li>
+  {% if page.references %}
+    <h4 class="blue bold">{{ site.translation[site.language].references }}:</h4>
+    <ul class="references no-checkbox" itemprop="references">
+      {% for reference in page.references %}
+      <li><a class="black italic" href="{{reference.url}}">{{reference.name}}</a></li>
       {% endfor %}
     </ul>
   {% endif %}
@@ -152,8 +152,8 @@ layout: default
   return this.on("click", cb);
   };
 
-  $("ul li").append('<input type="checkbox">');
-  $("ul li").clickToggle(function(){
+  $("ul:not(.no-checkbox) li").append('<input type="checkbox">');
+  $("ul:not(.no-checkbox) li:not(.no-checkbox").clickToggle(function(){
     $(this).children("input").prop('checked', true);
     var height = $(this).height();
     var y = $(window).scrollTop();
