@@ -12,6 +12,7 @@ layout: default
       <svg class="js-geomicon geomicon" width="14" height="14" data-icon="camera" viewBox="0 0 32 32" style="fill:{{page.color}}"><title>camera icon</title><path d="M0 6 L8 6 L10 2 L22 2 L24 6 L32 6 L32 28 L0 28 z M9 17 A7 7 0 0 0 23 17 A7 7 0 0 0 9 17"></path></svg>
     </a>
     {% endif %}
+    <img id="meta-hero" itemprop="image" src="{{site.baseurl}}/images/{{ image }}" />
   </div>
   {% endif %}
 
@@ -41,7 +42,9 @@ layout: default
   {% endif %}
   
   <div class="mt1 clearfix">
-    <div class="sm-col-8" itemprop="recipeYield"><span class="{{page.color}} bold">{{ site.translation[site.language].recipe_yield }}:</span> {{page.recipe_yield}}</div>
+    <div class="sm-col-8">
+      <span class="{{page.color}} bold">{{ site.translation[site.language].recipe_yield }}</span>: 
+      <span itemprop="recipeYield">{{page.recipe_yield}}</span></div>
   </div>
 
   <!-- call up recipe and directions -->
@@ -74,9 +77,9 @@ layout: default
 
     <div class="sm-col sm-col-6 lg-col-6">
       <h4 class="{{page.color}} mt0 mb2 xs-center">{{ site.translation[site.language].directions }}</h4>
-      <ul itemprop="recipeInstructions">
+      <ul>
         {% for direction in page.directions %}
-        <li>{{ direction | markdownify }}</li>
+        <li itemprop="recipeInstructions">{{ direction | markdownify }}</li>
         {% endfor %}
       </ul>
     </div>
