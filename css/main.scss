@@ -68,3 +68,17 @@ a:hover .image{opacity:0.2;}
 .border-1 { border-width: 1px; }
 .border-1:active { border-width: 1px; }
 .capitalize { text-transform: capitalize; }
+
+.{{site.color}} {
+    color: {{site.color}};
+}
+.bg-{{site.color}} {
+    background-color: {{site.color}};
+}
+
+.indigo {
+    color: indigo;
+}
+.bg-indigo {
+    background-color: indigo;
+}

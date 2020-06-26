@@ -9,14 +9,13 @@ layout: default
   <div class="xs-p2 md-mt3 mx-auto" id="recipe-hero">
     {% if page.imagecredit %}
     <a href="{{ page.imagecredit }}" class="right">
-      <svg class="js-geomicon geomicon" width="14" height="14" data-icon="camera" viewBox="0 0 32 32" style="fill:currentcolor"><title>camera icon</title><path d="M0 6 L8 6 L10 2 L22 2 L24 6 L32 6 L32 28 L0 28 z M9 17 A7 7 0 0 0 23 17 A7 7 0 0 0 9 17"></path></svg>
+      <svg class="js-geomicon geomicon" width="14" height="14" data-icon="camera" viewBox="0 0 32 32" style="fill:{{page.color}}"><title>camera icon</title><path d="M0 6 L8 6 L10 2 L22 2 L24 6 L32 6 L32 28 L0 28 z M9 17 A7 7 0 0 0 23 17 A7 7 0 0 0 9 17"></path></svg>
     </a>
     {% endif %}
   </div>
   {% endif %}
 
 <article class="post-content px2">
-
 <!-- call up the main recipe title and content -->
   <header class="post-header">
     <h1 class="post-title center m1 sm-mt3" itemprop="name">{{ page.title }}</h1>
@@ -42,7 +41,7 @@ layout: default
     <div class="sm-col sm-col-6 lg-col-6">
       <!-- check if it's a component-based recipe -->
       {% if page.components %}
-      <h4 class="blue mt0 mb2 xs-center">{{ site.translation[site.language].components }}</h4>
+      <h4 class="{{page.color}} mt0 mb2 xs-center">{{ site.translation[site.language].components }}</h4>
       <ul>
         <!-- list components that make up recipe -->
         {% for component in page.components %}
@@ -52,7 +51,7 @@ layout: default
       {% endif %}
 
       {% if page.ingredients %}
-      <h4 class="blue mt0 mb2 xs-center">{{ site.translation[site.language].ingredients }}</h4>
+      <h4 class="{{page.color}} mt0 mb2 xs-center">{{ site.translation[site.language].ingredients }}</h4>
       <ul itemprop="ingredients">
         <!-- list ingredients that make up recipe -->
         {% for ingredient in page.ingredients %}
@@ -64,7 +63,7 @@ layout: default
     </div>
 
     <div class="sm-col sm-col-6 lg-col-6">
-      <h4 class="blue mt0 mb2 xs-center">{{ site.translation[site.language].directions }}</h4>
+      <h4 class="{{page.color}} mt0 mb2 xs-center">{{ site.translation[site.language].directions }}</h4>
       <ul itemprop="recipeInstructions">
         {% for direction in page.directions %}
         <li>{{ direction | markdownify }}</li>
@@ -79,7 +78,7 @@ layout: default
   {% if page.components %}
 
   <div class="components bg-darken-2 p2 mt3 mb3 center">
-    &darr; {{ site.translation[site.language].component_based }} &darr;
+    &darr; {{ site.translation[site.language].component_based | replace: "!!!", page.color }} &darr;
   </div>
 
   <div class="clearfix mxn2">
@@ -102,14 +101,14 @@ layout: default
         {% endif %}
       {% endfor %}
 
-      <h4 class="blue regular xs-center">{{ site.translation[site.language].ingredients }}</h4>
+      <h4 class="{{page.color}} regular xs-center">{{ site.translation[site.language].ingredients }}</h4>
         <ul class="ingredients" itemprop="ingredients">
         {% for item in recipe.ingredients %}
         <li itemprop="ingredient">{{ item | markdownify }}</li>
         {% endfor %}
       </ul>
 
-      <h4 class="blue regular xs-center">{{ site.translation[site.language].directions }}</h4>
+      <h4 class="{{page.color}} regular xs-center">{{ site.translation[site.language].directions }}</h4>
         <ul itemprop="instructions">
         {% for item in recipe.directions %}
         <li>{{ item | markdownify }}</li>
@@ -130,7 +129,7 @@ layout: default
   {% endfor %}
 
   {% if page.references %}
-    <h4 class="blue bold">{{ site.translation[site.language].references }}:</h4>
+    <h4 class="{{page.color}} bold">{{ site.translation[site.language].references }}:</h4>
     <ul class="references no-checkbox" itemprop="references">
       {% for reference in page.references %}
       <li><a class="black italic" href="{{reference.url}}">{{reference.name}}</a></li>

@@ -5,8 +5,16 @@ description: The plain text recipe database for hackers
 baseurl: "https://chow.koosh.xyz"
 language: "en"
 lang_direction: "ltr"
-color: "#007FFF"
+color: &site-color "maroon"
 github_username:  mkirsch42
+github_url: https://github.com/mkirsch42/chowdown
+
+defaults:
+  -
+    scope:
+      type: "recipes"
+    values:
+      color: *site-color
 
 # Build settings
 markdown: kramdown
@@ -28,7 +36,7 @@ translation:
     directions: "Directions"
     category: "Category"
     nutritional_information: "Nutritional Information"
-    component_based: 'This is a <strong class="blue">component-based recipe</strong>.'
+    component_based: 'This is a <strong class="!!!">component-based recipe</strong>.'
     search: "Search"
     blog: "Blog"
     subscribe: "Subscribe"
