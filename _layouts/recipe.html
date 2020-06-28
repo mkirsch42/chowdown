@@ -23,7 +23,7 @@ layout: default
   </header>
 
   <div class="px2 mt3 clearfix">
-    <div class="sm-col-8 mx-auto" itemprop="description">{{page.content}}</div>
+    <div class="sm-col-8 mx-auto" itemprop="description">{{page.content | markdownify}}</div>
   </div>
 
   <div class="mt1 clearfix">
@@ -41,11 +41,13 @@ layout: default
   </div>
   {% endif %}
   
+  {% if page.recipe_yield %}
   <div class="mt1 clearfix">
     <div class="sm-col-8">
       <span class="{{page.color}} bold">{{ site.translation[site.language].recipe_yield }}</span>: 
       <span itemprop="recipeYield">{{page.recipe_yield}}</span></div>
   </div>
+  {% endif %}
 
   <!-- call up recipe and directions -->
   <div class="clearfix mt3">
@@ -69,7 +71,7 @@ layout: default
         <!-- list ingredients that make up recipe -->
         {% assign replacepath = site.url | append: site.baseurl %}
         {% for ingredient in page.ingredients %}
-        <li itemprop="recipeIngredient">{{ ingredient | replace: "!!!", replacepath | markdownify }}</li>
+        <li itemprop="recipeIngredient">{{ ingredient | markdownify }}</li>
         {% endfor %}
       </ul>
       {% endif %}

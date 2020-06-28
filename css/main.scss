@@ -27,6 +27,7 @@ ul li input{position: absolute; top:5px; left:0; opacity:0.5;}
 .post li{margin-bottom:1rem; padding:0 0 0 1rem;}
 .post li:before{content:"- "; position:absolute; left:0; color:#007FFF}
 
+ul[itemprop="ingredients"] li a, li[itemprop="recipeInstructions"] a, [itemprop="description"] a { color: {{site.color}}; font-style: italic; }
 a .image{transition:.2s ease all; opacity:1;}
 a:hover .image{opacity:0.2;}
 .ingredients p{margin-bottom:0.5rem;}
@@ -37,11 +38,15 @@ a:hover .image{opacity:0.2;}
 
 #recipe-hero {
     height: 25vh;
-    background-size: cover;
+    background-size: 100% auto;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position-x: center;
-    background-position-y: 25%;
+    transition: background-size .5s ease-in-out;
+
+    &:hover {
+        background-size: 50% auto;
+    }
 }
 
 #meta-hero {
@@ -53,6 +58,7 @@ a:hover .image{opacity:0.2;}
         width: 75%;
         height: 300px;
         background-attachment: scroll;
+        background-position-y: 25%;
     }
 }
 
