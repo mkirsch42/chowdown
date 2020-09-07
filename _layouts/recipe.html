@@ -60,7 +60,7 @@ layout: default
         <!-- list components that make up recipe -->
         {% for component_name in page.components %}
         {% assign component = site.recipes | where: "slug", component_name | first %}
-        <li><a class="black" href="{{ component.permalink }}">{{ component.title | markdownify }}</a></li>
+        <li><a class="black italic" href="{{component.url}}">{{ component.title | markdownify }}</a></li>
         {% endfor %}
       </ul>
       {% endif %}
@@ -88,6 +88,15 @@ layout: default
     </div>
 
   </div>
+
+  {% if page.references %}
+    <h4 class="{{page.color}} bold">{{ site.translation[site.language].references }}:</h4>
+    <ul class="references no-checkbox" itemprop="references">
+      {% for reference in page.references %}
+      <li><a class="black italic" href="{{reference.url}}">{{reference.name}}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 <!-- end recipe and directions -->
 
 <!-- check if it's a component-based recipe, render it -->
@@ -101,7 +110,7 @@ layout: default
   {% for component_name in page.components %}
   {% assign component = site.recipes | where: "slug", component_name | first %}
     <div class="sm-col sm-col-4 px2">
-      <h4 class="{{page.color}} center">{{component.title}}</h4>
+      <h4 class="{{page.color}} center"><a class="{{page.color}}" href="{{component.url}}">{{component.title}}</a></h4>
 
       {% if component.image %}
       <div class="image ratio bg-cover" style="background-image:url({{site.url}}{{site.baseurl}}/images/{{ component.image }});">
@@ -133,15 +142,6 @@ layout: default
 
   {% endif %}
 <!-- end components -->
-
-  {% if page.references %}
-    <h4 class="{{page.color}} bold">{{ site.translation[site.language].references }}:</h4>
-    <ul class="references no-checkbox" itemprop="references">
-      {% for reference in page.references %}
-      <li><a class="black italic" href="{{reference.url}}">{{reference.name}}</a></li>
-      {% endfor %}
-    </ul>
-  {% endif %}
 
   </article>
 
